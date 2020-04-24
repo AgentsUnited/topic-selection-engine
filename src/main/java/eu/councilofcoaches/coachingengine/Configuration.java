@@ -24,6 +24,7 @@ public class Configuration extends LinkedHashMap<String,String> {
 	public static final String VERSION = "version";
 	public static final String BASE_URL = "baseUrl";
 	public static final String DATA_DIR = "dataDir";
+	public static final String WOOL_URL = "woolServiceUrl";
 
 	private static final Object LOCK = new Object();
 	private static Configuration instance = null;

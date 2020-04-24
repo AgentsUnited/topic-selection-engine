@@ -1,5 +1,7 @@
 package eu.councilofcoaches.coachingengine;
 
+import eu.councilofcoaches.coachingengine.topicselection.ServiceManager;
+import eu.councilofcoaches.coachingengine.topicselection.ServiceManagerConfig;
 import eu.woolplatform.utils.AppComponents;
 import org.slf4j.Logger;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +26,9 @@ import java.net.URL;
 @EnableScheduling
 public class Application extends SpringBootServletInitializer implements
 ApplicationListener<ContextClosedEvent> {
+
+	private ServiceManager serviceManager;
+
 	/**
 	 * Constructs a new application. It reads service.properties and
 	 * initializes the {@link Configuration Configuration} and the {@link
@@ -48,8 +53,18 @@ ApplicationListener<ContextClosedEvent> {
 		Thread.setDefaultUncaughtExceptionHandler((t, e) ->
 				logger.error("Uncaught exception: " + e.getMessage(), e)
 		);
+
+
+		ServiceManagerConfig serviceManagerConfig = new DefaultServiceManagerConfig(config.get(Configuration.WOOL_URL));
+		ServiceManagerConfig.setInstance(serviceManagerConfig);
+		serviceManager = new ServiceManager(config.get(Configuration.WOOL_URL));
 		logger.info("Coaching Engine version: " + config.get(
 				Configuration.VERSION));
+
+	}
+
+	public ServiceManager getServiceManager() {
+		return serviceManager;
 	}
 
 	@Override
