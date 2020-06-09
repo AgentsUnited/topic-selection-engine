@@ -2,14 +2,14 @@
 The Coaching Engine is a module for the Agents United platform. It allows developers to build a module that chooses a conversation topic that is most relevant to be discussed given the availble information.
 The topic selection algorithm will make this choice based on a topic structure - a tree of topic nodes - and selection parameters that can be added to the topic nodes in that structure. 
 
-## N.B. Wool Web Service needed.
+**N.B. Wool Web Service needed.**
 The Coaching Engine needs access to e.g. an instance of WOOL Web Service (see www.woolplatform.eu) since it retrieves the values for the selection parameters from the Wool Web Service. 
 
-# Install and run the Coaching Engine
+## Install and run the Coaching Engine
 
-## Requirements
+### Requirements
 
-### JAVA
+#### JAVA
 
 The web service was tested with OpenJDK 11.
 
@@ -26,7 +26,7 @@ And add the bin directory to your path. For example:
 You should now be able to run Java from the command prompt. For example:
 > java -version
 
-### TOMCAT
+#### TOMCAT
 
 The web service was tested with Tomcat 8.5.
 
@@ -60,7 +60,7 @@ You should now be able to open the Tomcat manager at:
 http://localhost:8080/
 
 
-## CONFIGURATION
+### CONFIGURATION
 
 The web service is configured with this file that needs to be created:
 <GITDIR>\CoachingEngine\gradle.properties
@@ -68,7 +68,7 @@ The web service is configured with this file that needs to be created:
 You can make a copy of this file and change it:
 <GITDIR>\CoachingEngine\gradle.sample.properties
 
-## DEPLOY
+### DEPLOY
 
 Make sure that Tomcat is running.
 
@@ -88,7 +88,7 @@ If you want to make a clean build and deploy, then enter:
 After deploying you can access the Swagger interface at:
 http://localhost:8080/servlets/coaching-engine
 
-## USAGE
+### USAGE
 
 Also see the Swagger interface that should be available (after deployment) at:
 http://localhost:8080/servlets/coaching-engine
@@ -121,3 +121,7 @@ Include this "user" and "token" in your calls to the Coaching Engine endpoints.
 ## Defining a new topic structure and selection parameters
 
 -- To be added.--
+
+## LICENSE
+
+The Coaching Engine (CE) is licensed under the GNU Lesser General Public License v3.0 (LGPL 3.0).
