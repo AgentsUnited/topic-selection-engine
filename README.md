@@ -95,20 +95,24 @@ http://localhost:8080/servlets/coaching-engine
 
 First, retrieve an auth token from the Wool Web Service with POST /auth/login. The request body should be a JSON
 object like this:
-{
+
+`{
   "user": "user@example.com",
   "password": "p4ssw0rd",
   "tokenExpiration": 1440
-}
+}`
+
 The "user" is case-insensitive.
 The "tokenExpiration" is optional. It can be a value in minutes or "never".
 The default is 1440 minutes (24 hours).
 
 The response is a JSON object like this:
-{
+
+`{
   "user": "user@example.com",
   "token": "eyJhbGciOiJI..."
-}
+}`
+
 The "user" in the response may have different case than the case-insensitive
 "user" in the request.
 
