@@ -2,9 +2,9 @@
 The Coaching Engine is a module for the Agents United platform. It allows developers to build a module that chooses a conversation topic that is most relevant to be discussed given the availble information.
 The topic selection algorithm will make this choice based on a topic structure - a tree of topic nodes - and selection parameters that can be added to the topic nodes in that structure. 
 
-**N.B. Wool Web Service needed.**
+**N.B. WOOL Web Service needed.**
 
-The Coaching Engine needs access to e.g. an instance of WOOL Web Service (see www.woolplatform.eu) since it retrieves the values for the selection parameters from the Wool Web Service. 
+The Coaching Engine needs access to e.g. an instance of the WOOL Web Service (see www.woolplatform.eu) since it retrieves the values for the selection parameters from the WOOL Web Service. 
 
 ## Install and run the Coaching Engine
 
