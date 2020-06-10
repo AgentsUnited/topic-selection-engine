@@ -94,7 +94,7 @@ http://localhost:8080/servlets/coaching-engine
 Also see the Swagger interface that should be available (after deployment) at:
 http://localhost:8080/servlets/coaching-engine
 
-First, retrieve an auth token from the Wool Web Service with POST /auth/login. The request body should be a JSON
+First, retrieve an auth token from the WOOL Web Service with POST /auth/login. The request body should be a JSON
 object like this:
 
 `{
