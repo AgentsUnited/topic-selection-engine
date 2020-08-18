@@ -122,6 +122,6 @@ Include this "user" and "token" in your calls to the Coaching Engine endpoints.
 
 -- To be added.--
 
-## LICENSE
+## License
 
-The Coaching Engine (CE) is licensed under the GNU Lesser General Public License v3.0 (LGPL 3.0).
+The Topic Selection Engine (TSE) is licensed under the GNU Lesser General Public License v3.0 (LGPL 3.0).
