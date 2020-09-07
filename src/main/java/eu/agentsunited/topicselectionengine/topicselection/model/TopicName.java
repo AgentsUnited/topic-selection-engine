@@ -6,5 +6,5 @@ package eu.agentsunited.topicselectionengine.topicselection.model;
  * @author Tessa Beinema
  */
 public enum TopicName {
-    START, INTRODUCTION, FEEDBACK, GATHERINFORMATION, GOALSETTING, HEALTHEDUCATION;
+    START, DEFAULT, INTRODUCTION, FEEDBACK, GATHERINFORMATION, GOALSETTING, HEALTHEDUCATION;
 }

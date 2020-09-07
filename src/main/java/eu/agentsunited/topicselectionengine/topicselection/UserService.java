@@ -73,32 +73,39 @@ public class UserService {
 
     public Topic getNewTopic() throws NotFoundException, DatabaseException, IOException {
         List<String> agentVariables = new ArrayList<String>();
-        agentVariables.add("coachCarlosEnabled");
-        agentVariables.add("coachEmmaEnabled");
-        agentVariables.add("coachHelenEnabled");
-        agentVariables.add("coachOliviaEnabled");
         agentVariables.add("coachRasmusEnabled");
+        agentVariables.add("coachOliviaEnabled");
+        agentVariables.add("coachHelenEnabled");
+        agentVariables.add("coachEmmaEnabled");
+        agentVariables.add("coachCarlosEnabled");
 
         List<TopicNode> availableTopics = new ArrayList<TopicNode>();
         for (String agentVariable : agentVariables) {
             Object object = this.dataController.getVariable(agentVariable);
             if (object != null) {
-                if (agentVariable.equals("coachRasmusEnabled")) {
-                    availableTopics.add(this.topicAgents.get(Domain.PEER).selectNewTopic());
-                }
-                if (agentVariable.equals("coachOliviaEnabled")) {
-                    availableTopics.add(this.topicAgents.get(Domain.SOCIAL).selectNewTopic());
-                }
-                if (agentVariable.equals("coachHelenEnabled")) {
-                    availableTopics.add(this.topicAgents.get(Domain.COGNITION).selectNewTopic());
-                }
-                if (agentVariable.equals("coachEmmaEnabled")) {
-                    availableTopics.add(this.topicAgents.get(Domain.PHYSICALACTIVITY).selectNewTopic());
-                }
-                if (agentVariable.equals("coachCarlosEnabled")) {
+                if (agentVariable.equals("coachRasmusEnabled") && object.toString().equals("true")) {
                     availableTopics.add(this.topicAgents.get(Domain.CHRONICPAIN).selectNewTopic());
                 }
+                if (agentVariable.equals("coachOliviaEnabled") && object.toString().equals("true")) {
+                    availableTopics.add(this.topicAgents.get(Domain.PHYSICALACTIVITY).selectNewTopic());
+                }
+                if (agentVariable.equals("coachHelenEnabled") && object.toString().equals("true")) {
+                    availableTopics.add(this.topicAgents.get(Domain.COGNITION).selectNewTopic());
+                }
+                if (agentVariable.equals("coachEmmaEnabled") && object.toString().equals("true")) {
+                    availableTopics.add(this.topicAgents.get(Domain.SOCIAL).selectNewTopic());
+                }
+                if (agentVariable.equals("coachCarlosEnabled") && object.toString().equals("true")) {
+                    availableTopics.add(this.topicAgents.get(Domain.PEER).selectNewTopic());
+                }
             }
+        }
+
+        if (availableTopics.size() == 0) {
+            logger.info("NO AVAILABLE TOPICS");
+            TopicNode defaultNode = new TopicNode(TopicName.DEFAULT, 1.0, 1.0);
+            defaultNode.setLastSelectionValue(1.0);
+            availableTopics.add(defaultNode);
         }
 
         double highestProbability = -1;

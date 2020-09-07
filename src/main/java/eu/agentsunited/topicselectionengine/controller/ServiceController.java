@@ -113,13 +113,16 @@ public class ServiceController {
 		else if (topic.getTopicDomain() == Domain.COGNITION) {
 			agentName = "Helen";
 		}
+		else {
+			agentName = "Default";
+		}
 		DialogueParticipant participant1 = new DialogueParticipant("Agent", agentName);
 		participants.add(participant1);
 		Object object = userService.getDataController().getVariable("userFirstName");
 
 		DialogueParticipant participant2 = null;
 		if (object != null) {
-			participant2 = new DialogueParticipant("User", object.toString());
+			participant2 = new DialogueParticipant("User", "User");
 		}
 		else {
 			participant2 = new DialogueParticipant("User", "User");
@@ -163,6 +166,8 @@ public class ServiceController {
 				participant1CMV.add("goal_type+");
 			}
 		}
+
+
 		//participant1CMV.add("goal_setting+");
 		//participant1CMV.add("physical_activity+");
 
