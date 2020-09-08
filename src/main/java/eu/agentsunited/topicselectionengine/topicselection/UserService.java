@@ -100,6 +100,9 @@ public class UserService {
                 }
             }
         }
+        for (TopicNode tn : availableTopics) {
+            logger.info("TOPIC NODE: " + tn.getTopic().getTopicName().toString() + " "  +tn.getLastSelectionValue());
+        }
 
         if (availableTopics.size() == 0) {
             logger.info("NO AVAILABLE TOPICS");
@@ -113,6 +116,7 @@ public class UserService {
         for (TopicNode node : availableTopics) {
             if (node.getLastSelectionValue() > highestProbability) {
                 selectedNode = node;
+                highestProbability = node.getLastSelectionValue();
             }
         }
 

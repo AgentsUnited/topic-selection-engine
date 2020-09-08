@@ -129,6 +129,18 @@ public class ServiceController {
 		}
 		participants.add(participant2);
 
+		if(topic.getTopicDomain() == Domain.PEER && topic.getTopicName() == TopicName.INTRODUCTION) {
+			participants.add(new DialogueParticipant("Agent", "Olivia"));
+		}
+		if(topic.getTopicDomain() == Domain.PHYSICALACTIVITY && topic.getTopicName() == TopicName.INTRODUCTION) {
+			participants.add(new DialogueParticipant("Agent", "Emma"));
+			participants.add(new DialogueParticipant("Agent", "Carlos"));
+		}
+		if(topic.getTopicDomain() == Domain.SOCIAL && topic.getTopicName() == TopicName.INTRODUCTION) {
+			participants.add(new DialogueParticipant("Agent", "Olivia"));
+			participants.add(new DialogueParticipant("Agent", "Carlos"));
+		}
+
 		List<String> participant1CMV = new ArrayList<String>();
 		List<String> participant1CAV = new ArrayList<String>();
 		List<String> participant1CP = new ArrayList<String>();
@@ -144,6 +156,7 @@ public class ServiceController {
 						participant1CMV.add("steps");
 					}
 					else {
+						participants.add(new DialogueParticipant("Agent", "Emma"));
 						participant1CMV.add("long_term_goal+");
 						participant1CMV.add("steps");
 					}
@@ -156,6 +169,7 @@ public class ServiceController {
 						participant1CMV.add("minutes");
 					}
 					else {
+						participants.add(new DialogueParticipant("Agent", "Emma"));
 						participant1CMV.add("long_term_goal+");
 						participant1CMV.add("minutes");
 					}
@@ -164,17 +178,9 @@ public class ServiceController {
 			}
 			else {
 				participant1CMV.add("goal_type+");
+				topicText += "1";
 			}
 		}
-
-
-		//participant1CMV.add("goal_setting+");
-		//participant1CMV.add("physical_activity+");
-
-		//participant1CAV.add("steps-");
-
-		//participant1CP.add("intro < direct");
-		//participant1CP.add("calories < minutes");
 
 		UtteranceParams filstantiatorParamsParticipant1 = new UtteranceParams(participant1.getName(), participant1CMV, participant1CAV, participant1CP, "authoritative < socratic");
 
@@ -196,6 +202,17 @@ public class ServiceController {
 		List<UtteranceParams> filstantiatorParams = new ArrayList<UtteranceParams>();
 		filstantiatorParams.add(filstantiatorParamsParticipant1);
 		filstantiatorParams.add(filstantiatorParamsParticipant2);
+
+		List<String> emptyCAV = new ArrayList<>();
+		List<String> emptyCMV = new ArrayList<>();
+		List<String> empty2CP = new ArrayList<>();
+
+		if (participants.size() > 2) {
+			for (int i = 2; i < participants.size(); i++) {
+				UtteranceParams filstantiatorParamsParticipantN = new UtteranceParams(participants.get(i).getName(), emptyCMV, emptyCAV, empty2CP, "");
+				filstantiatorParams.add(filstantiatorParamsParticipantN);
+			}
+		}
 
 		TopicMessage topicMessage = TopicMessageFactory.generateTopicMessage(cmd, topicText, participants, filstantiatorParams);
 

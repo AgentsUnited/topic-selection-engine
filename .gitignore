@@ -10,3 +10,4 @@
 !/gradle.sample.properties
 /src/main/resources/service.properties
 out/
+WebContent/

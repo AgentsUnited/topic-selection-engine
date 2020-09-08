@@ -37,7 +37,6 @@ public class TopicStructurePeer extends TopicStructure {
         introductionCompletedLimiting.addToValueMap("true", 1.0);
         introductionCompletedLimiting.addToValueMap("false", 0.0);
         this.addSelectionParameterToNode(TopicName.GATHERINFORMATION, introductionCompletedLimiting);
-        this.addSelectionParameterToNode(TopicName.FEEDBACK, introductionCompletedLimiting);
 
         CategoricalSelectionParameter gatherInformationCompletedEnabling = new CategoricalSelectionParameter("peerUserCompletedCaaSEnabling", 1.0);
         gatherInformationCompletedEnabling.addToValueMap("true", 0.0);
