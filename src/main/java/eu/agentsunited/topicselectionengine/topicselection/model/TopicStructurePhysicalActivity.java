@@ -79,7 +79,7 @@ public class TopicStructurePhysicalActivity extends TopicStructure {
         CategoricalSelectionParameter weightMeasurementLimiting = new CategoricalSelectionParameter("paUserHasWeightMeasurementLimiting", 1.0);
         weightMeasurementLimiting.addToValueMap("true", 1.0);
         weightMeasurementLimiting.addToValueMap("false", 0.0);
-        this.addSelectionParameterToNode(TopicName.GATHERINFORMATION, weightMeasurementLimiting);
+        this.addSelectionParameterToNode(TopicName.FEEDBACK, weightMeasurementLimiting);
 
         CategoricalSelectionParameter feedbackEnabling = new CategoricalSelectionParameter("paUserCompletedFeedbackEnabling", 1.0);
         feedbackEnabling.addToValueMap("true", 0.0);

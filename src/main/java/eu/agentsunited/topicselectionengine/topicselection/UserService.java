@@ -114,7 +114,7 @@ public class UserService {
         double highestProbability = -1;
         TopicNode selectedNode = null;
         for (TopicNode node : availableTopics) {
-            if (node.getLastSelectionValue() > highestProbability) {
+            if (node.getLastSelectionValue() >= highestProbability) {
                 selectedNode = node;
                 highestProbability = node.getLastSelectionValue();
             }
