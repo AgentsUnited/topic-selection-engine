@@ -69,7 +69,7 @@ public class SelectionParameterMapping {
                     valueMap.put(parameterName, "false");
                 }
             }
-            if(parameterName.equals("cogUserCompletedCaaSEnabling") || parameterName.equals("cogUserCompletedCaaSLimiting")) {
+            if(parameterName.equals("cogUserCompletedCaaSEnabling")) {
                 if (this.getValueForVariable("esmHelenCompleted").equals("true")) {
                     valueMap.put(parameterName, "true");
                 }
@@ -134,8 +134,8 @@ public class SelectionParameterMapping {
                 }
             }
             if(parameterName.equals("paUserCompletedFeedbackEnabling")) {
-                if ((this.getValueForVariable("paUserCompletedFeedbackSteps").equals("true") || this.getValueForVariable("paUserCompletedFeedbackMinutes").equals("true"))
-                        && this.getValueForVariable("paUserCompletedFeedbackWeightMeasurement").equals("true")) {
+                if (!(this.getValueForVariable("paUserCompletedFeedbackSteps").equals("true") || this.getValueForVariable("paUserCompletedFeedbackMinutes").equals("true"))
+                        || (!this.getValueForVariable("paUserCompletedFeedbackWeightMeasurement").equals("true"))) {
                     valueMap.put(parameterName, "true");
                 }
                 else {

@@ -75,9 +75,9 @@ public class UserService {
         List<String> agentVariables = new ArrayList<String>();
         agentVariables.add("coachRasmusEnabled");
         agentVariables.add("coachOliviaEnabled");
-        agentVariables.add("coachHelenEnabled");
         agentVariables.add("coachEmmaEnabled");
         agentVariables.add("coachCarlosEnabled");
+        agentVariables.add("coachHelenEnabled");
 
         List<TopicNode> availableTopics = new ArrayList<TopicNode>();
         for (String agentVariable : agentVariables) {
@@ -89,14 +89,14 @@ public class UserService {
                 if (agentVariable.equals("coachOliviaEnabled") && object.toString().equals("true")) {
                     availableTopics.add(this.topicAgents.get(Domain.PHYSICALACTIVITY).selectNewTopic());
                 }
-                if (agentVariable.equals("coachHelenEnabled") && object.toString().equals("true")) {
-                    availableTopics.add(this.topicAgents.get(Domain.COGNITION).selectNewTopic());
-                }
                 if (agentVariable.equals("coachEmmaEnabled") && object.toString().equals("true")) {
                     availableTopics.add(this.topicAgents.get(Domain.SOCIAL).selectNewTopic());
                 }
                 if (agentVariable.equals("coachCarlosEnabled") && object.toString().equals("true")) {
                     availableTopics.add(this.topicAgents.get(Domain.PEER).selectNewTopic());
+                }
+                if (agentVariable.equals("coachHelenEnabled") && object.toString().equals("true")) {
+                    availableTopics.add(this.topicAgents.get(Domain.COGNITION).selectNewTopic());
                 }
             }
         }

@@ -153,12 +153,12 @@ public class ServiceController {
 					object2 = userService.getDataController().getVariable("paLongTermStepsGoal");
 					if (object2 != null) {
 						participant1CMV.add("short_term_goal+");
-						participant1CMV.add("steps");
+						participant1CMV.add("steps+");
 					}
 					else {
 						participants.add(new DialogueParticipant("Agent", "Emma"));
 						participant1CMV.add("long_term_goal+");
-						participant1CMV.add("steps");
+						participant1CMV.add("steps+");
 					}
 				}
 				else if (object.toString().equals("minutes")) {
@@ -166,19 +166,66 @@ public class ServiceController {
 					object2 = userService.getDataController().getVariable("paLongTermMinutesGoal");
 					if (object2 != null) {
 						participant1CMV.add("short_term_goal+");
-						participant1CMV.add("minutes");
+						participant1CMV.add("minutes+");
 					}
 					else {
 						participants.add(new DialogueParticipant("Agent", "Emma"));
 						participant1CMV.add("long_term_goal+");
-						participant1CMV.add("minutes");
+						participant1CMV.add("minutes+");
 					}
+				}
+				else if (object.toString().equals("null")) {
+					participant1CMV.add("goal_type+");
+					topicText += "1";
 				}
 
 			}
 			else {
 				participant1CMV.add("goal_type+");
 				topicText += "1";
+			}
+		}
+		if(topic.getTopicDomain() == Domain.PHYSICALACTIVITY && topic.getTopicName() == TopicName.FEEDBACK) {
+			object = userService.getDataController().getVariable("paUserCompletedFeedbackWeightMeasurement");
+			if (object != null) {
+				if (object.toString().equals("false") || object.toString().equals("null")) {
+					participant1CMV.add("weight+");
+
+					Object object2 = userService.getDataController().getVariable("paCurrentGoalType");
+					if (object2 != null) {
+						if (object2.toString().equals("steps")) {
+							participant1CAV.add("steps-");
+						}
+						else if (object2.toString().equals("minutes")) {
+							participant1CAV.add("minutes-");
+						}
+					}
+					participant1CAV.add("steps-");
+				}
+				else if (object.toString().equals("true")) {
+					participant1CAV.add("weight-");
+					Object object2 = userService.getDataController().getVariable("paCurrentGoalType");
+					if (object2 != null) {
+						if (object2.toString().equals("steps")) {
+							participant1CMV.add("steps+");
+						}
+						else if (object2.toString().equals("minutes")) {
+							participant1CMV.add("minutes+");
+						}
+					}
+				}
+			}
+			else {
+				participant1CMV.add("weight+");
+				Object object2 = userService.getDataController().getVariable("paCurrentGoalType");
+				if (object2 != null) {
+					if (object2.toString().equals("steps")) {
+						participant1CAV.add("steps-");
+					}
+					else if (object2.toString().equals("minutes")) {
+						participant1CAV.add("minutes-");
+					}
+				}
 			}
 		}
 

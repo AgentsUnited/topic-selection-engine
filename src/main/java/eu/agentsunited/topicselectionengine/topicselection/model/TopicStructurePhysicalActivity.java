@@ -55,7 +55,7 @@ public class TopicStructurePhysicalActivity extends TopicStructure {
         goalTypeSet.addToValueMap("false", 1.0);
         this.addSelectionParameterToNode(TopicName.GOALSETTING, goalTypeSet);
 
-        CategoricalSelectionParameter longTermGoalSet = new CategoricalSelectionParameter("paUserHasLongTermGoal", 0.6);
+        CategoricalSelectionParameter longTermGoalSet = new CategoricalSelectionParameter("paUserHasLongTermGoal", 0.3);
         longTermGoalSet.addToValueMap("true", 0.0);
         longTermGoalSet.addToValueMap("false", 1.0);
         this.addSelectionParameterToNode(TopicName.GOALSETTING, longTermGoalSet);

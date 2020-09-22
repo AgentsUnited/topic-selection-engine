@@ -24,7 +24,7 @@ public class TopicStructureCognition extends TopicStructure {
     @Override
     public void addSelectionParameters() {
         CategoricalSelectionParameter gatherInformationCompletedEnabling = new CategoricalSelectionParameter("cogUserCompletedCaaSEnabling", 1.0);
-        gatherInformationCompletedEnabling.addToValueMap("true", 0.0);
+        gatherInformationCompletedEnabling.addToValueMap("true", 0.01);
         gatherInformationCompletedEnabling.addToValueMap("false", 1.0);
         this.addSelectionParameterToNode(TopicName.GATHERINFORMATION, gatherInformationCompletedEnabling);
     }
