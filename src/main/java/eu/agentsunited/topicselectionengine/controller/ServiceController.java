@@ -151,7 +151,7 @@ public class ServiceController {
 				if (object.toString().equals("steps")) {
 					participant1CAV.add("minutes-");
 					object2 = userService.getDataController().getVariable("paLongTermStepsGoal");
-					if (object2 != null) {
+					if (object2 != null && !object2.equals("null")) {
 						participant1CMV.add("short_term_goal+");
 						participant1CMV.add("steps+");
 					}
@@ -164,7 +164,7 @@ public class ServiceController {
 				else if (object.toString().equals("minutes")) {
 					participant1CAV.add("steps-");
 					object2 = userService.getDataController().getVariable("paLongTermMinutesGoal");
-					if (object2 != null) {
+					if (object2 != null  && !object2.equals("null")) {
 						participant1CMV.add("short_term_goal+");
 						participant1CMV.add("minutes+");
 					}
@@ -192,7 +192,7 @@ public class ServiceController {
 					participant1CMV.add("weight+");
 
 					Object object2 = userService.getDataController().getVariable("paCurrentGoalType");
-					if (object2 != null) {
+					if (object2 != null  && !object2.equals("null")) {
 						if (object2.toString().equals("steps")) {
 							participant1CAV.add("steps-");
 						}
@@ -205,7 +205,7 @@ public class ServiceController {
 				else if (object.toString().equals("true")) {
 					participant1CAV.add("weight-");
 					Object object2 = userService.getDataController().getVariable("paCurrentGoalType");
-					if (object2 != null) {
+					if (object2 != null  && !object2.equals("null")) {
 						if (object2.toString().equals("steps")) {
 							participant1CMV.add("steps+");
 						}
@@ -218,7 +218,7 @@ public class ServiceController {
 			else {
 				participant1CMV.add("weight+");
 				Object object2 = userService.getDataController().getVariable("paCurrentGoalType");
-				if (object2 != null) {
+				if (object2 != null  && !object2.equals("null")) {
 					if (object2.toString().equals("steps")) {
 						participant1CAV.add("steps-");
 					}
