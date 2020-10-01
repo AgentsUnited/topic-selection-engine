@@ -77,7 +77,7 @@ public class TopicAgent {
             int randomForExploration = random.nextInt(100);
             if (randomForExploration > this.getExplorationProbability()) {
                 logger.debug("Chosing from these nodes through exploitation.");
-                double highestPriorityValue = 0.0;
+                double highestPriorityValue = -1.0;
                 for(TopicNode mapNode : childNodesWithProbabilities.keySet()) {
                     if(childNodesWithProbabilities.get(mapNode) > highestPriorityValue) {
                         chosenNode = mapNode;
