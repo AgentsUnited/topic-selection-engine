@@ -3,7 +3,7 @@ package eu.agentsunited.topicselectionengine.topicselection.model;
 import eu.agentsunited.topicselectionengine.DataController;
 
 /**
- * Class defining a topic structure for the physical activity domain using {@link TopicNodes}.
+ * Class defining a topic structure for the physical activity domain using {@link TopicNode}.
  *
  * @author Tessa Beinema
  */

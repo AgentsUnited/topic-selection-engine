@@ -75,7 +75,7 @@ public class TopicNode {
      * @param continuousSelectionParameterValues
      * @return A Double representing the node's relevance.
      */
-    public double getProbability(Map<String, String> categoricalSelectionParameterValues, Map<String, Double> continuousSelectionParameterValues) {
+    public double getRelevance(Map<String, String> categoricalSelectionParameterValues, Map<String, Double> continuousSelectionParameterValues) {
         double numerator = this.aprioriValue*this.aprioriWeight;
         double denominator = this.aprioriWeight;
         System.out.println("\tApriori numerator: " + numerator + " and denominator: " + denominator);

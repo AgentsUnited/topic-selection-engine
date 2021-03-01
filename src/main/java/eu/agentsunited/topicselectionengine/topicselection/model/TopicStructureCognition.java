@@ -3,7 +3,7 @@ package eu.agentsunited.topicselectionengine.topicselection.model;
 import eu.agentsunited.topicselectionengine.DataController;
 
 /**
- * Class defining a topic structure for the cognition domain using {@link TopicNodes}.
+ * Class defining a topic structure for the cognition domain using {@link TopicNode}.
  *
  * @author Tessa Beinema
  */

@@ -41,18 +41,22 @@ public class UserService {
 
         this.topicAgents = new HashMap<Domain, TopicAgent>();
         this.dataController = new DataController(this.userId, authToken, woolWebServiceURL);
-        this.addTopicAgent(Domain.CHRONICPAIN, new TopicAgent(Domain.CHRONICPAIN, this.dataController, new TopicStructureChronicPain(this.dataController)));
-        this.addTopicAgent(Domain.COGNITION, new TopicAgent(Domain.COGNITION, this.dataController, new TopicStructureCognition(this.dataController)));
-        this.addTopicAgent(Domain.PEER, new TopicAgent(Domain.PEER, this.dataController, new TopicStructurePeer(this.dataController)));
-        this.addTopicAgent(Domain.PHYSICALACTIVITY, new TopicAgent(Domain.PHYSICALACTIVITY, this.dataController, new TopicStructurePhysicalActivity(this.dataController)));
-        this.addTopicAgent(Domain.SOCIAL, new TopicAgent(Domain.SOCIAL, this.dataController, new TopicStructureSocial(this.dataController)));
+        this.addTopicAgent(Domain.CHRONICPAIN, new TopicAgent(Domain.CHRONICPAIN, this.dataController, 0, new TopicStructureChronicPain(this.dataController), null));
+        this.addTopicAgent(Domain.COGNITION, new TopicAgent(Domain.COGNITION, this.dataController, 0, new TopicStructureCognition(this.dataController), null));
+        this.addTopicAgent(Domain.PEER, new TopicAgent(Domain.PEER, this.dataController, 0, new TopicStructurePeer(this.dataController), null));
+        this.addTopicAgent(Domain.PHYSICALACTIVITY, new TopicAgent(Domain.PHYSICALACTIVITY, this.dataController, 0, new TopicStructurePhysicalActivity(this.dataController), null));
+        this.addTopicAgent(Domain.SOCIAL, new TopicAgent(Domain.SOCIAL, this.dataController, 0, new TopicStructureSocial(this.dataController), null));
+        this.addTopicAgent(Domain.GENERAL, new TopicAgent(Domain.GENERAL, this.dataController, 100, null, new TopicScriptGeneral(this.dataController)));
     }
 
+    /**
+     * Adds topic agents to a map of topic agents and domains.
+     * @param domain
+     * @param agent
+     */
     private void addTopicAgent(Domain domain, TopicAgent agent) {
-        topicAgents.put(domain, agent);
+        this.topicAgents.put(domain, agent);
     }
-
-
 
     // ---------- Getters:
 
@@ -68,9 +72,17 @@ public class UserService {
         if (!this.topicAgents.containsKey(domain)) {
             throw new NotFoundException("Topic agent not found for domain: " + domain);
         }
-        return topicAgents.get(domain);
+        return this.topicAgents.get(domain);
     }
 
+    /**
+     * Returns a new topic (for use with the 'get-new-topic' endpoint.
+     * This function was mostly written for the demonstrator and thus contains demonstrator code.
+     * @return A {@link Topic}
+     * @throws NotFoundException
+     * @throws DatabaseException
+     * @throws IOException
+     */
     public Topic getNewTopic() throws NotFoundException, DatabaseException, IOException {
         List<String> agentVariables = new ArrayList<String>();
         agentVariables.add("coachRasmusEnabled");
@@ -125,13 +137,20 @@ public class UserService {
         return topic;
     }
 
+    /**
+     * Function that looks up a topic agent for a given domain and returns a topic.
+     * @param domain
+     * @return The selected {@link Topic}
+     * @throws NotFoundException
+     */
     public Topic getNewTopicForDomain(Domain domain) throws NotFoundException {
         this.activeTopicAgent = this.getTopicAgentForDomain(domain);
         TopicNode topicNode = null;
         try {
-            topicNode = activeTopicAgent.selectNewTopic();
+            topicNode = this.activeTopicAgent.selectNewTopic();
         }
         catch (Exception e) {
+            logger.info(e.toString());
             throw new NotFoundException("No TopicAgent found for domain: " + domain);
         }
         Topic topic = topicNode.getTopic();

@@ -176,6 +176,31 @@ public class SelectionParameterMapping {
                 }
             }
 
+            //Parameters for the example topic script
+            if(parameterName.equals("paUserCompletedIntroduction")) {
+                if (this.getValueForVariable("paUserCompletedIntroduction").equals("true")) {
+                    valueMap.put(parameterName, "true");
+                }
+                else {
+                    valueMap.put(parameterName, "false");
+                }
+            }
+            if(parameterName.equals("paUserCompletedGoalSetting")) {
+                if (this.getValueForVariable("paUserCompletedGoalSetting").equals("true")) {
+                    valueMap.put(parameterName, "true");
+                }
+                else {
+                    valueMap.put(parameterName, "false");
+                }
+            }
+            if(parameterName.equals("paUserCompletedFeedback")) {
+                if (this.getValueForVariable("paUserCompletedFeedback").equals("true")) {
+                    valueMap.put(parameterName, "true");
+                }
+                else {
+                    valueMap.put(parameterName, "false");
+                }
+            }
         }
         return valueMap;
     }

@@ -90,7 +90,6 @@ public class ServiceController {
 		return httpReply;
 	}
 
-
 	private TopicMessage generateTopicMessage(UserService userService, Topic topic) throws DatabaseException, IOException {
 		String cmd = "new";
 		String topicText = topic.getTopicName().toString();
