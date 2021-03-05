@@ -11,7 +11,7 @@ The Topic Selection Engine needs access to e.g. an instance of the WOOL Web Serv
 
 #### JAVA
 
-The web service was tested with OpenJDK 11.
+The web service was tested with OpenJDK 11. It also seems to work well with Java 8.
 
 https://jdk.java.net/archive/
 
